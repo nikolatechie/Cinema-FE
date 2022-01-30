@@ -86,7 +86,7 @@ export default {
       }).then(res => {
         return res.json()
       }).then(data => {
-        if (data.token != undefined && data.token != "") {
+        if (data.token !== undefined && data.token !== "") {
           localStorage.setItem("token", data.token);
           window.location.replace("http://localhost:8085/");
         }
@@ -99,7 +99,7 @@ export default {
 
 <style scoped>
 .alert {
-  margin: 0px auto;
+  margin: 0 auto;
   width: 61%;
 }
 

@@ -116,17 +116,4 @@ th {
 td {
   padding: 15px;
 }
-
-#nav {
-  background-color: black;
-}
-
-#nav a {
-  font-weight: bold;
-  color: white;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

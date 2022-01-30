@@ -134,8 +134,8 @@ export default {
   max-width: 36%;
   max-height: 70%;
   background-color: rgb(59, 59, 59, 0.5);
-  padding: 0px 50px;
-  margin: 0px auto;
+  padding: 0 50px;
+  margin: 0 auto;
 }
 
 .btn-vue{

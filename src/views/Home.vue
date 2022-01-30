@@ -126,7 +126,7 @@ export default {
       const btn = document.getElementById('btn-recommend');
       const rec = document.getElementsByClassName("recommendations")[0];
 
-      if (rec.style.display == 'none') {
+      if (rec.style.display === 'none') {
         rec.style.display = 'block'
         btn.innerHTML = 'Recommend a movie ▲'
 
@@ -180,7 +180,7 @@ export default {
               genre: data.genre,
               dateTime: it.dateTime,
               price: it.price,
-              seatsLeft: 2 + Number.parseInt(10 * Math.random() % 7)
+              seatsLeft: 2 + Math.ceil(10 * Math.random() % 7)
             })
 
             this.schedule.sort((a, b) => {
@@ -212,7 +212,6 @@ export default {
       }
       catch (err) {
         alert(err);
-        return;
       }
     },
     reserve(btn) {
@@ -231,7 +230,7 @@ export default {
             },
             body: JSON.stringify({
               scheduleId: this.schedule[i].id,
-              seatNum: Number.parseInt(150 * Math.random()) + 1,
+              seatNum: Math.ceil(150 * Math.random()) + 1,
               userId: Number.parseInt(this.getUserId())
             })
           }).then(res => {
