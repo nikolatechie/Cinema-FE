@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/settings">Account Settings</router-link> |
     <router-link to="/visits">Visits</router-link> |
+    <router-link to="/chat">Chat</router-link> |
     <button class="link-btn" @click="logOut">Log Out</button>
   </div>
 </template>

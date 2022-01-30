@@ -121,7 +121,7 @@ export default {
   position: fixed;
   min-height: 100%;
   min-width: 100%;
-  background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  background-image: url("./cinema.jpg");
   color: white;
 }
 
