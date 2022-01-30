@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="col-12 form-group text-center">
-            <input type="submit" :disabled="v$.form.$invalid" placeholder="Register" class="btn btn-vue btn-lg col-4">
+            <input type="submit" :disabled="v$.form.$invalid" value="Register" class="btn btn-vue btn-lg col-4">
           </div>
         </div>
       </form>

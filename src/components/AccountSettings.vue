@@ -1,5 +1,5 @@
 <template>
-  <div class="page">`
+  <div class="page">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/settings">Account Settings</router-link> |
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="col-12 form-group text-center">
-            <input type="submit" :disabled="v$.form.$invalid" placeholder="Update" class="btn btn-vue btn-lg col-4">
+            <input type="submit" :disabled="v$.form.$invalid" value="Update" class="btn btn-vue btn-lg col-4">
           </div>
         </div>
       </form>
@@ -135,7 +135,7 @@ export default {
 }
 
 #change-text {
-  padding-bottom: 30px;
+  padding: 20px 30px;
 }
 
 .change-info {
@@ -143,8 +143,8 @@ export default {
   max-width: 36%;
   max-height: 70%;
   background-color: rgb(59, 59, 59, 0.5);
-  padding: 20px 50px;
-  margin: 20px auto auto;
+  padding: 0px 50px;
+  margin: 0px auto;
 }
 
 .btn-vue{
@@ -159,7 +159,6 @@ export default {
 }
 
 #nav {
-  padding-top: 25px;
   background-color: black;
 }
 
