@@ -5,12 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    counter: 0
+    recommendations: []
   },
   mutations: {
-  },
-  actions: {
-  },
-  modules: {
+    addMovie(state, movie) {
+      state.recommendations.push(movie)
+    },
+    removeMovie(state, idx) {
+      state.recommendations.splice(idx, 1)
+    },
+    clearAll(state) {
+      state.recommendations = []
+    }
   }
 })

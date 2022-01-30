@@ -81,19 +81,23 @@ export default {
   created() {
     this.loadSchedule()
   },
+  computed: {
+    recommendations() {
+      return this.$store.state.recommendations
+    }
+  },
   data() {
     return {
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       schedule: [],
       userLoggedIn: true,
       reserved: {},
-      recommendations: []
     }
   },
   methods: {
     submitRecommendations() {
-      if (this.recommendations.length) {
-        this.recommendations = []
+      if (this.recommendations) {
+        this.$store.commit('clearAll')
         alert("Thank you for submitting recommendations!")
       }
       else alert('Please add at least one movie recommendation.')
@@ -103,7 +107,7 @@ export default {
 
       for (let i = 0; i < btns.length; ++i) {
         if (btns[i] === btn.target) {
-          this.recommendations.splice(i, 1);
+          this.$store.commit('removeMovie', i);
           break;
         }
       }
@@ -114,7 +118,7 @@ export default {
       if (movieTitle.value === '')
         alert('Movie title can\'t be empty!');
       else {
-        this.recommendations.push(movieTitle.value);
+        this.$store.commit('addMovie', movieTitle.value);
         movieTitle.value = '';
       }
     },
