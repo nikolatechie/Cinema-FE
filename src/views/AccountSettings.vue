@@ -1,11 +1,6 @@
 <template>
   <div class="page">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/settings">Account Settings</router-link> |
-      <router-link to="/visits">Visits</router-link> |
-      <button class="link-btn" @click="logOut">Log Out</button>
-    </div>
+    <MainNavbar></MainNavbar>
 
     <div class="change-info">
       <form @submit.prevent="submitForm">
@@ -42,7 +37,6 @@
 </template>
 
 <script>
-import Home from "./Home";
 import useVuelidate from '@vuelidate/core'
 import {email, minLength, maxLength} from '@vuelidate/validators'
 
@@ -83,9 +77,6 @@ export default {
     submitForm() {
       if (!this.v$.form.$invalid)
         this.updateInfo()
-    },
-    logOut() {
-      Home.methods.logOut();
     },
     getUserEmail() {
       const token = localStorage.getItem("token");
@@ -156,18 +147,5 @@ export default {
 
 .btn-vue:hover {
   border: 1px solid orange;
-}
-
-#nav {
-  background-color: black;
-}
-
-#nav a {
-  font-weight: bold;
-  color: white;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

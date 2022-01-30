@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Home.vue'
-import Login from '../components/Login.vue'
-import Register from '../components/Register.vue'
+import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -21,14 +21,14 @@ const routes = [
   },
   {
       path: '/settings',
-      component: () => import('../components/AccountSettings'),
+      component: () => import('../views/AccountSettings'),
       meta: {
           requiresAuth: true
       }
   },
   {
       path: '/visits',
-      component: () => import('../components/Visits'),
+      component: () => import('../views/Visits'),
       meta: {
           requiresAuth: true
       }

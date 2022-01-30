@@ -1,11 +1,6 @@
 <template>
   <div class="page">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/settings">Account Settings</router-link> |
-      <router-link to="/visits">Visits</router-link> |
-      <button class="link-btn" @click="logOut">Log Out</button>
-    </div>
+    <MainNavbar></MainNavbar>
 
     <h1>All your visits</h1>
 
@@ -46,9 +41,6 @@ export default {
     }
   },
   methods: {
-    logOut() {
-      Home.methods.logOut()
-    },
     async loadVisits() {
       await fetch("http://localhost:8080/api/ticket/visits/" + Home.methods.getUserId(), {
         method: "GET",

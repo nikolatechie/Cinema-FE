@@ -1,9 +1,6 @@
 <template>
   <div class="page">
-    <div id="nav">
-      <button class="link-btn" id="nav-login" @click="redirectToLogIn">Log In</button> |
-      <button class="link-btn" @click="redirectToRegister">Register</button>
-    </div>
+    <LoginRegNavbar current="login"></LoginRegNavbar>
 
     <div class="login">
       <form @submit.prevent="submitForm">
@@ -69,12 +66,6 @@ export default {
     }
   },
   methods: {
-    redirectToLogIn() {
-      window.location.replace("http://localhost:8085/login");
-    },
-    redirectToRegister() {
-      window.location.replace("http://localhost:8085/register");
-    },
     submitForm() {
       if (!this.v$.form.$invalid)
         this.login()
@@ -108,7 +99,7 @@ export default {
 
 <style scoped>
 .alert {
-  margin: 20px auto;
+  margin: 0px auto;
   width: 61%;
 }
 
@@ -143,19 +134,5 @@ export default {
 .btn-vue:hover {
   color: white;
   border: 1px solid orange;
-}
-
-#nav {
-  padding-top: 25px;
-  background-color: black;
-}
-
-#nav a {
-  font-weight: bold;
-  color: white;
-}
-
-#nav-login {
-  color: #42b983;
 }
 </style>
