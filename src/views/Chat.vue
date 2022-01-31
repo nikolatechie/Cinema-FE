@@ -5,16 +5,12 @@
 
     <div class="chat">
       <div class="chatBox">
-        <ul style="list-style-type: none; left: 0">
-          <li v-for="message in messages" :key="message">
-            <p class="my-msg" v-if="username === message.username">
-              <strong>{{message.username}}:</strong> {{message.message}}
-            </p>
-            <p v-else>
-              <strong>{{message.username}}:</strong> {{message.message}}
-            </p>
-          </li>
-        </ul>
+        <p v-for="message in messages" :key="message" class="message" :class="{
+          'message-out': message.username === username,
+          'message-in': message.username !== username
+        }">
+          <strong>{{message.username}}:</strong> {{message.message}}
+        </p>
       </div>
       <div class="msg-form">
         <form autocomplete="off" @submit.prevent="submit">
@@ -40,6 +36,8 @@ export default {
   },
   methods: {
     async submit() {
+      if (this.message === '') return
+
       await fetch('http://localhost:8084/api/messages', {
         method: 'POST',
         headers: {
@@ -61,7 +59,6 @@ export default {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
 
-      //console.log(JSON.parse(jsonPayload));
       return this.extractUsername(JSON.parse(jsonPayload).email);
     },
     extractUsername(email) {
@@ -93,20 +90,38 @@ export default {
 }
 
 .chat {
-  max-width: 410px;
-  background-color: black;
+  max-width: 500px;
   margin: 30px auto;
 }
 
 .chatBox {
   text-align: left;
-  height: 200px;
-  max-width: 400px;
+  background: white;
+  height: 50vh;
+  padding: 1em;
+  overflow-y: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
+  max-width: 400px;
   margin: 0 auto;
-  background-color: rgb(55, 55, 55, 0.6);
+  box-shadow: rgba(100, 100, 111, 0.8) 0px 27px 22px 0px;
+}
+
+.message {
+  width: 50%;
+  border-radius: 10px;
+  padding: .5em;
+  font-size: .9em;
+}
+
+.message-out {
+  background: #407FFF;
   color: white;
+  margin-left: 50%;
+}
+
+.message-in {
+  background: #F1F0F0;
+  color: black;
 }
 
 .msg-form {
@@ -124,15 +139,12 @@ export default {
   height: 40px;
   border-radius: 0;
   border: none;
-  margin-top: -1px;
+  margin-top: -2px;
+  background-color: dodgerblue;
 }
 
-ul {
-  margin-left: -15px;
-  margin-top: 10px;
-}
-
-.my-msg {
-  background-color: cornflowerblue;
+#in-btn:hover {
+  background-color: #1451cc;
+  transition-duration: 0.4s;
 }
 </style>
