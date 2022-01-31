@@ -99,7 +99,7 @@ export default {
   background: white;
   height: 50vh;
   padding: 1em;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: hidden;
   max-width: 400px;
   margin: 0 auto;
@@ -111,6 +111,7 @@ export default {
   border-radius: 10px;
   padding: .5em;
   font-size: .9em;
+  max-height: none;
 }
 
 .message-out {
