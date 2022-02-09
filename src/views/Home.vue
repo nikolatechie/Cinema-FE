@@ -155,6 +155,30 @@ export default {
       window.location.replace("http://localhost:8085/login");
     },
     async loadSchedule() {
+      if (localStorage.getItem("token") === null) {
+        this.userLoggedIn = false
+        return;
+      }
+
+      try {
+        await fetch("http://localhost:8080/api/ticket/" + this.getUserId(), {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+          }
+        }).then(res => {
+          return res.json()
+        }).then(data => {
+          data.forEach(it => {
+            this.reserved[it.scheduleId] = true
+          })
+        }).catch(err => alert(err.message));
+      }
+      catch (err) {
+        alert(err);
+      }
+
       await fetch("http://localhost:8080/api/schedule", {
         method: "GET",
         headers: {
@@ -191,30 +215,6 @@ export default {
           }).catch(err => alert(err))
         })
       }).catch(err => alert(err));
-
-      if (localStorage.getItem("token") === null) {
-        this.userLoggedIn = false
-        return;
-      }
-
-      try {
-        fetch("http://localhost:8080/api/ticket/" + this.getUserId(), {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("token")
-          }
-        }).then(res => {
-          return res.json()
-        }).then(data => {
-          data.forEach(it => {
-            this.reserved[it.scheduleId] = true
-          })
-        }).catch(err => alert(err.message));
-      }
-      catch (err) {
-        alert(err);
-      }
     },
     reserve(btn) {
       if (confirm("Confirm reservation?") === false)
@@ -231,7 +231,7 @@ export default {
               "Authorization": "Bearer " + localStorage.getItem("token")
             },
             body: JSON.stringify({
-              scheduleId: this.schedule[i].id,
+              scheduleId: this.schedule[i-2].id,
               seatNum: Math.ceil(150 * Math.random()) + 1,
               userId: Number.parseInt(this.getUserId())
             })

@@ -80,6 +80,11 @@ export default {
 }
 </script>
 
+/*
+  --------- IMPORTANT ---------
+  pokreni chat/chat.js
+*/
+
 <style scoped>
 .page {
   position: fixed;
@@ -103,7 +108,7 @@ export default {
   overflow-x: hidden;
   max-width: 400px;
   margin: 0 auto;
-  box-shadow: rgba(100, 100, 111, 0.8) 0px 27px 22px 0px;
+  box-shadow: rgba(100, 100, 111, 0.8) 0 27px 22px 0;
 }
 
 .message {
