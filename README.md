@@ -1,4 +1,4 @@
-Front-end developed using Vue.js framework; used Vuelidate for front-end form validation, Bootstrap and BootstrapVue, and Pusher.
+Front-end developed using Vue.js framework; used Vuelidate for front-end form validation, VueRouter, Bootstrap and BootstrapVue, and Pusher.
 There are four types of users:
 1) Admin (can manage all the data)
 2) Moderator (can manage data related to movies, halls and similar)
